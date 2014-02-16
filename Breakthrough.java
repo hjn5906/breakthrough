@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class Breakthrough extends JFrame
 {
-   private JButton[] gridUnits;
+   private JButton[] gridUnits; // array holding grid square buttons
    
    public Breakthrough()
    {
@@ -17,7 +17,7 @@ public class Breakthrough extends JFrame
       //creates grid squares
       gridUnits = new JButton[64]; 
       
-      //creates 64 buttons
+      //creates 64 grid square buttons
       for(int i = 0; i< gridUnits.length; i++) 
       {
          gridUnits[i] = new JButton();
@@ -25,6 +25,8 @@ public class Breakthrough extends JFrame
       } 
       
       //adds 64 buttons to the grid
+      //iterator formula start : i = 0, j = 0,  gridUnits[4 * 0 + 0] = gridUnits[0]
+      //iterator formula end   : i = 15, j = 3, gridUnits[4 * 15 + 3] = gridUnits[63]
       for (int i = 0; i < 16; i++)
       {
        
