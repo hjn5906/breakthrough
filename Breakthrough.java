@@ -48,6 +48,8 @@ public class Breakthrough extends JFrame
   
             }
             
+            
+            //sets text for 16 buttons to the letter "X"
             for(int k = 0; k< 8; k++) 
             {
          
@@ -58,6 +60,7 @@ public class Breakthrough extends JFrame
          
             }
             
+          //sets text for 16 buttons to the letter "O"
           for(int m = 0; m< 8; m++) 
           {
          
