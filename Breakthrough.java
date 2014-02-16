@@ -8,17 +8,18 @@ public class Breakthrough extends JFrame
    
    public Breakthrough()
    {
-      setTitle("Group 4 Chess Game");
-      
+         
       //JMenu
       JMenuBar jmb = new JMenuBar();
       setJMenuBar(jmb);
-      JMenu jmCount = new JMenu("File"); 
+      JMenu jmFile = new JMenu("File"); 
       
+      JMenuItem jmiSave = new JMenuItem("Save");
       JMenuItem jmiExit = new JMenuItem("Exit");
       
-      jmb.add(jmCount);
-      jmCount.add(jmiExit);
+      jmb.add(jmFile);
+      jmFile.add(jmiSave);
+      jmFile.add(jmiExit);
       
       //creates grid
       JPanel grid = new JPanel();
@@ -47,11 +48,25 @@ public class Breakthrough extends JFrame
   
             }
             
-            for(int k = 0; k < gridUnits.length; k++) 
+            for(int k = 0; k< 8; k++) 
             {
-               gridUnits[k].setText("X");
+         
+               for(int j = 0;j <2; j++)
+               {
+                   gridUnits[8*k + j].setText("X");
+               }
          
             }
+            
+          for(int m = 0; m< 8; m++) 
+          {
+         
+            for(int n = 0;n <2; n++)
+            {
+               gridUnits[8*m + 6 + n].setText("O");
+            }
+         
+         }
         
      }
       
