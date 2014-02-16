@@ -8,6 +8,7 @@ public class Breakthrough extends JFrame
    
    public Breakthrough()
    {
+      setTitle("Group 4 Chess Game");
       
       //creates grid
       JPanel grid = new JPanel();
@@ -15,18 +16,18 @@ public class Breakthrough extends JFrame
       grid.setSize(700,700);
       
       //creates grid squares
-      gridUnits = new JButton[64]; 
+      gridUnits = new JButton[64];
       
       //creates 64 grid square buttons
-      for(int i = 0; i< gridUnits.length; i++) 
+      for(int i = 0; i< gridUnits.length; i++)
       {
          gridUnits[i] = new JButton();
          
-      } 
+      }
       
       //adds 64 buttons to the grid
-      //iterator formula start : i = 0, j = 0,  gridUnits[4 * 0 + 0] = gridUnits[0]
-      //iterator formula end   : i = 15, j = 3, gridUnits[4 * 15 + 3] = gridUnits[63]
+      //iterator formula start : i = 0, j = 0, gridUnits[4 * 0 + 0] = gridUnits[0]
+      //iterator formula end : i = 15, j = 3, gridUnits[4 * 15 + 3] = gridUnits[63]
       for (int i = 0; i < 16; i++)
       {
        
@@ -40,6 +41,10 @@ public class Breakthrough extends JFrame
       
       add(grid);
    
+   }
+   
+   public void actionPerformed(ActionEvent ae)
+   {
    }
    
    public static void main (String[] args)
