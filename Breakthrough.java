@@ -10,11 +10,21 @@ public class Breakthrough extends JFrame
    {
       setTitle("Group 4 Chess Game");
       
+      //JMenu
+      JMenuBar jmb = new JMenuBar();
+      setJMenuBar(jmb);
+      JMenu jmCount = new JMenu("File"); 
+      
+      JMenuItem jmiExit = new JMenuItem("Exit");
+      
+      jmb.add(jmCount);
+      jmCount.add(jmiExit);
+      
       //creates grid
       JPanel grid = new JPanel();
       grid.setLayout(new GridLayout(8,8));
       grid.setSize(700,700);
-      
+
       //creates grid squares
       gridUnits = new JButton[64];
       
@@ -36,8 +46,14 @@ public class Breakthrough extends JFrame
                grid.add(gridUnits[4 * i + j]);
   
             }
+            
+            for(int k = 0; k < gridUnits.length; k++) 
+            {
+               gridUnits[k].setText("X");
+         
+            }
         
-      }
+     }
       
       add(grid);
    
@@ -45,7 +61,12 @@ public class Breakthrough extends JFrame
    
    public void actionPerformed(ActionEvent ae)
    {
-         String selection = ae.getSource();
+      String selection = ae.getActionCommand();
+      
+      if(selection.equals("Exit"))
+      {
+         System.exit(0);
+      }
    }
    
    public static void main (String[] args)
