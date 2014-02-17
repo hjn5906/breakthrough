@@ -13,7 +13,8 @@ public class Breakthrough extends JFrame
       JMenuBar jmb = new JMenuBar();
       setJMenuBar(jmb);
       JMenu jmFile = new JMenu("File"); 
-      
+      jmFile.setMnemonic(KeyEvent.VK_F);
+
       JMenuItem jmiOpen = new JMenuItem("Open");;
       JMenuItem jmiSave = new JMenuItem("Save");
       JMenuItem jmiExit = new JMenuItem("Exit");
