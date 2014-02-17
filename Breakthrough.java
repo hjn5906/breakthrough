@@ -89,6 +89,8 @@ public class Breakthrough extends JFrame
    
    public static void main (String[] args)
    {
+      
+      //creates a Breakthrough object
       Breakthrough bt = new Breakthrough();
       bt.setTitle("Breakthrough");
       bt.setSize(700,700);
