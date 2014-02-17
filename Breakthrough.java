@@ -14,12 +14,17 @@ public class Breakthrough extends JFrame
       setJMenuBar(jmb);
       JMenu jmFile = new JMenu("File"); 
       
+      JMenuItem jmiOpen = new JMenuItem("Open");;
       JMenuItem jmiSave = new JMenuItem("Save");
       JMenuItem jmiExit = new JMenuItem("Exit");
       
       jmb.add(jmFile);
+      jmFile.add(jmiOpen);
+      jmiOpen.setMnemonic(KeyEvent.VK_O);
       jmFile.add(jmiSave);
+      jmiSave.setMnemonic(KeyEvent.VK_S);
       jmFile.add(jmiExit);
+      jmiOpen.setMnemonic(KeyEvent.VK_E);
       
       //creates grid
       JPanel grid = new JPanel();
@@ -80,7 +85,7 @@ public class Breakthrough extends JFrame
    public void actionPerformed(ActionEvent ae)
    {
       String selection = ae.getActionCommand();
-      
+          
       if(selection.equals("Exit"))
       {
          System.exit(0);
