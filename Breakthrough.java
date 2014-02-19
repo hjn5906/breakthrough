@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Breakthrough extends JFrame
+public class Breakthrough extends JFrame implements ActionListener, MouseListener
 {
    private JButton[] gridUnits; // array holding grid square buttons
    
@@ -12,7 +12,7 @@ public class Breakthrough extends JFrame
       //JMenu
       JMenuBar jmb = new JMenuBar();
       setJMenuBar(jmb);
-      JMenu jmFile = new JMenu("File"); 
+      JMenu jmFile = new JMenu("File");
       jmFile.setMnemonic(KeyEvent.VK_F);
 
       JMenuItem jmiOpen = new JMenuItem("Open");;
@@ -26,6 +26,10 @@ public class Breakthrough extends JFrame
       jmiSave.setMnemonic(KeyEvent.VK_S);
       jmFile.add(jmiExit);
       jmiOpen.setMnemonic(KeyEvent.VK_E);
+      
+      //JButton
+      JButton jbNew = new JButton("New");
+      JButton jbUndo = new JButton("Undo");
       
       //creates grid
       JPanel grid = new JPanel();
@@ -56,7 +60,7 @@ public class Breakthrough extends JFrame
             
             
             //sets text for 16 buttons to the letter "X"
-            for(int k = 0; k< 8; k++) 
+            for(int k = 0; k< 8; k++)
             {
          
                for(int j = 0;j <2; j++)
@@ -67,7 +71,7 @@ public class Breakthrough extends JFrame
             }
             
           //sets text for 16 buttons to the letter "O"
-          for(int m = 0; m< 8; m++) 
+          for(int m = 0; m< 8; m++)
           {
          
             for(int n = 0;n <2; n++)
@@ -76,6 +80,15 @@ public class Breakthrough extends JFrame
             }
          
          }
+         
+         /*
+         //loop to locate pieces  
+         for (int i = 0; i < 8; i++) 
+         {
+            gridUnits[1][i].add(new JLabel(new ImageIcon("bpawn.gif")));
+            gridUnits[6][i].add(new JLabel(new ImageIcon("wpawn.gif")));
+         }
+         */
         
      }
       
@@ -93,6 +106,32 @@ public class Breakthrough extends JFrame
       }
    }
    
+
+    public void mouseClicked(MouseEvent me) 
+    {
+
+
+    }
+
+    public void mouseEntered(MouseEvent me) 
+    {
+    }
+
+   public void mouseExited(MouseEvent me) 
+   {
+
+    }
+
+    public void mousePressed(MouseEvent me) 
+    {
+
+    }
+
+    public void mouseReleased(MouseEvent me) 
+    {
+
+    }  
+   
    public static void main (String[] args)
    {
       
@@ -105,3 +144,5 @@ public class Breakthrough extends JFrame
       bt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    }
 }
+
+
