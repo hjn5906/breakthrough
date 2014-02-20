@@ -37,10 +37,17 @@ public class Breakthrough extends JFrame implements ActionListener, MouseListene
       grid.setSize(700,700);
 
       //creates grid squares
+<<<<<<< HEAD
       gridUnits = new JButton[8][8];
       
       //creates 64 grid square buttons
       for(int rows = 0; rows< gridUnits.length; rows++)
+=======
+      gridUnits = new JButton[64];
+      
+      //creates 64 grid square buttons
+      for(int i = 0; i< gridUnits.length; i++)
+>>>>>>> 9b5a88919683718b4549e33efc1f4d8fad4eb3fc
       {
          for(int cols = 0; cols< gridUnits.length; cols++)
          { 
@@ -52,7 +59,11 @@ public class Breakthrough extends JFrame implements ActionListener, MouseListene
       //adds 64 buttons to the grid
       //iterator formula start : i = 0, j = 0, gridUnits[4 * 0 + 0] = gridUnits[0]
       //iterator formula end : i = 15, j = 3, gridUnits[4 * 15 + 3] = gridUnits[63]
+<<<<<<< HEAD
       for (int rows = 0; rows < gridUnits.length; rows++)
+=======
+      for (int i = 0; i < 16; i++)
+>>>>>>> 9b5a88919683718b4549e33efc1f4d8fad4eb3fc
       {
        
             for(int cols = 0; cols < gridUnits.length; cols++)
@@ -60,6 +71,7 @@ public class Breakthrough extends JFrame implements ActionListener, MouseListene
                grid.add(gridUnits[rows][cols]);
   
             }
+<<<<<<< HEAD
       }
             
             
@@ -70,11 +82,23 @@ public class Breakthrough extends JFrame implements ActionListener, MouseListene
                for(int cols = 0;cols <2; cols++)
                {
                    gridUnits[rows][cols].setText("X");
+=======
+            
+            
+            //sets text for 16 buttons to the letter "X"
+            for(int k = 0; k< 8; k++)
+            {
+         
+               for(int j = 0;j <2; j++)
+               {
+                   gridUnits[8*k + j].setText("X");
+>>>>>>> 9b5a88919683718b4549e33efc1f4d8fad4eb3fc
                }
          
             }
             
           //sets text for 16 buttons to the letter "O"
+<<<<<<< HEAD
           for( int rows = 0; rows< gridUnits.length; rows++)
             {
          
@@ -84,6 +108,18 @@ public class Breakthrough extends JFrame implements ActionListener, MouseListene
                }
          
             }         
+=======
+          for(int m = 0; m< 8; m++)
+          {
+         
+            for(int n = 0;n <2; n++)
+            {
+               gridUnits[8*m + 6 + n].setText("O");
+            }
+         
+         }
+         
+>>>>>>> 9b5a88919683718b4549e33efc1f4d8fad4eb3fc
          /*
          //loop to locate pieces  
          for (int i = 0; i < 8; i++) 
@@ -93,7 +129,11 @@ public class Breakthrough extends JFrame implements ActionListener, MouseListene
          }
          */
         
+<<<<<<< HEAD
      
+=======
+     }
+>>>>>>> 9b5a88919683718b4549e33efc1f4d8fad4eb3fc
       
       add(grid);
       
@@ -110,6 +150,19 @@ public class Breakthrough extends JFrame implements ActionListener, MouseListene
       }
    }
    
+<<<<<<< HEAD
+=======
+   public void actionPerformed(ActionEvent ae)
+   {
+      String selection = ae.getActionCommand();
+          
+      if(selection.equals("Exit"))
+      {
+         System.exit(0);
+      }
+   }
+   
+>>>>>>> 9b5a88919683718b4549e33efc1f4d8fad4eb3fc
 
     public void mouseClicked(MouseEvent me) 
     {
@@ -149,3 +202,7 @@ public class Breakthrough extends JFrame implements ActionListener, MouseListene
    }
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9b5a88919683718b4549e33efc1f4d8fad4eb3fc
