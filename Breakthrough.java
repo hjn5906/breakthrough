@@ -103,17 +103,42 @@ public class Breakthrough extends JFrame implements ActionListener, MouseListene
       
       add(grid);
       
+      for (int rows = 0; rows < gridUnits.length; rows++)
+      {
+       
+         for(int cols = 0; cols < gridUnits.length; cols++)
+         {
+            gridUnits[rows][cols].addActionListener(this);
+         
+         }
+      
+      }
+
+      
    
    }
    
    public void actionPerformed(ActionEvent ae)
    {
-      String selection = ae.getActionCommand();
-          
-      if(selection.equals("Exit"))
+      Object choice = ae.getSource();
+      
+      //test
+      for (int rows = 0; rows < gridUnits.length; rows++)
       {
-         System.exit(0);
+       
+         for(int cols = 0; cols < gridUnits.length; cols++)
+         {
+            if(choice == gridUnits[rows][cols])
+            {
+               System.out.print("yes");
+            }
+         
+         }
+      
       }
+
+          
+     
    }
    
 
