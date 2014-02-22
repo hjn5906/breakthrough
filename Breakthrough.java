@@ -1,10 +1,13 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.util.*;
 
-public class Breakthrough extends JFrame implements ActionListener, MouseListener
-{
-   private JButton[][] gridUnits; // array holding grid square buttons
+public class Breakthrough extends JFrame implements ActionListener{
+private JButton[][] gridUnits; // array holding grid square buttons
+private int x = 0;
+private int y = 0;
+ 
    
    public Breakthrough()
    {
@@ -122,52 +125,47 @@ public class Breakthrough extends JFrame implements ActionListener, MouseListene
    {
       Object choice = ae.getSource();
       
-      //test
+      
       for (int rows = 0; rows < gridUnits.length; rows++)
       {
        
          for(int cols = 0; cols < gridUnits.length; cols++)
          {
+            if(choice == gridUnits[rows][cols] &&(x == 0 && y == 0))
+            {
+               x = rows;
+               y = cols;
+  
+            }
+            
+            if(choice == gridUnits[x][y+1])
+            {
+               gridUnits[x][y].setText(null);
+               gridUnits[x][y+1].setText("X");
+
+            }
+            
             if(choice == gridUnits[rows][cols])
             {
-               System.out.print("yes");
+               x = rows;
+               y = cols;
+  
             }
-         
+
+
+            
+                  
          }
+         
+      }//end of outer for loop
       
-      }
+      System.out.println(x);
+      System.out.println(y);
+       
+   }//end of actionPerformed
+   
 
-          
      
-   }
-   
-
-
-   public void mouseClicked(MouseEvent me) 
-   {
-   
-   
-   }
-
-   public void mouseEntered(MouseEvent me) 
-   {
-   }
-
-   public void mouseExited(MouseEvent me) 
-   {
-   
-   }
-
-   public void mousePressed(MouseEvent me) 
-   {
-   
-   }
-
-   public void mouseReleased(MouseEvent me) 
-   {
-   
-   }  
-   
    public static void main (String[] args)
    {
       
