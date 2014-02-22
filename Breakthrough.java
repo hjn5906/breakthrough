@@ -3,52 +3,17 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 
-public class Breakthrough extends JFrame implements ActionListener{
-private JButton[][] gridUnits; // array holding grid square buttons
-private int x = 0;
-private int y = 0;
- 
+public class Breakthrough extends JFrame implements ActionListener
+{
+   private JButton[][] gridUnits; // array holding grid square buttons
+   private int x = 0;
+   private int y = 0;
+
    
    public Breakthrough()
    {
          
-      //JMenu
-      JMenuBar jmb = new JMenuBar();
-      setJMenuBar(jmb);
-      
-      //File
-      JMenu jmFile = new JMenu("File");
-      jmFile.setMnemonic(KeyEvent.VK_F);
-      
-      //Help
-      JMenu jmHelp = new JMenu("Help");
-      jmHelp.setMnemonic(KeyEvent.VK_H);
-      
-      //File Items
-      JMenuItem jmiOpen = new JMenuItem("Open");
-      JMenuItem jmiSave = new JMenuItem("Save");
-      JMenuItem jmiExit = new JMenuItem("Exit");
-      
-      //Help Item
-      JMenuItem = jmiAbout = new JMenuItem("About");
-      
-      //File Objects
-      jmb.add(jmFile);
-      jmFile.add(jmiOpen);
-      jmiOpen.setMnemonic(KeyEvent.VK_O);
-      jmFile.add(jmiSave);
-      jmiSave.setMnemonic(KeyEvent.VK_S);
-      jmFile.add(jmiExit);
-      jmiOpen.setMnemonic(KeyEvent.VK_E);
-      
-      //About Obkects
-      jmb.add(jmAbout);
-      jmAbout.add(jmiAbout);
-      
-      //JButton
-      JButton jbNew = new JButton("New");
-      JButton jbUndo = new JButton("Undo");
-      
+           
       //creates grid
       JPanel grid = new JPanel();
       grid.setLayout(new GridLayout(8,8));
@@ -92,10 +57,7 @@ private int y = 0;
          }
       }
    
-            
-            
-          
-            
+     
           //sets text for 16 buttons to the letter "O"
    
       for(int rows = 0; rows< gridUnits.length; rows++)
@@ -157,7 +119,7 @@ private int y = 0;
             {
                gridUnits[x][y].setText(null);
                gridUnits[x][y+1].setText("X");
-
+  
             }
             
             if(choice == gridUnits[rows][cols])
@@ -180,7 +142,8 @@ private int y = 0;
    }//end of actionPerformed
    
 
-     
+ 
+   
    public static void main (String[] args)
    {
       
@@ -193,4 +156,3 @@ private int y = 0;
       bt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    }
 }
-
