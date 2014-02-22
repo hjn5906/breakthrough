@@ -13,7 +13,40 @@ public class Breakthrough extends JFrame implements ActionListener
    public Breakthrough()
    {
          
-           
+      //JMenu
+      JMenuBar jmb = new JMenuBar();
+      setJMenuBar(jmb);
+      
+      //File
+      JMenu jmFile = new JMenu("File");
+      jmFile.setMnemonic(KeyEvent.VK_F);
+      
+      //Help
+      JMenu jmHelp = new JMenu("Help");
+      jmHelp.setMnemonic(KeyEvent.VK_H);
+      
+      //File Items
+      JMenuItem jmiOpen = new JMenuItem("Open");
+      JMenuItem jmiSave = new JMenuItem("Save");
+      JMenuItem jmiExit = new JMenuItem("Exit");
+      
+      //File Objects
+      jmb.add(jmFile);
+      jmFile.add(jmiOpen);
+      jmiOpen.setMnemonic(KeyEvent.VK_O);
+      jmFile.add(jmiSave);
+      jmiSave.setMnemonic(KeyEvent.VK_S);
+      jmFile.add(jmiExit);
+      jmiOpen.setMnemonic(KeyEvent.VK_E);
+      
+      //Help Item
+      JMenuItem jmAbout = new JMenuItem("About");
+      
+      jmHelp.add(jmAbout);
+      jmb.add(jmHelp);
+
+
+      
       //creates grid
       JPanel grid = new JPanel();
       grid.setLayout(new GridLayout(8,8));
