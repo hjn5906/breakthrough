@@ -8,6 +8,8 @@ public class Breakthrough extends JFrame implements ActionListener
    private JButton[][] gridUnits; // array holding grid square buttons
    private int x = 0;
    private int y = 0;
+   private int y2 = 7;
+   private boolean found = false;
 
    
    public Breakthrough()
@@ -44,8 +46,8 @@ public class Breakthrough extends JFrame implements ActionListener
       
       jmHelp.add(jmAbout);
       jmb.add(jmHelp);
-
-
+   
+   
       
       //creates grid
       JPanel grid = new JPanel();
@@ -126,7 +128,7 @@ public class Breakthrough extends JFrame implements ActionListener
          }
       
       }
-
+   
       
    
    }
@@ -136,41 +138,80 @@ public class Breakthrough extends JFrame implements ActionListener
       Object choice = ae.getSource();
       
       
-      for (int rows = 0; rows < gridUnits.length; rows++)
-      {
-       
-         for(int cols = 0; cols < gridUnits.length; cols++)
+      try
+      { 
+         for (int rows = 0; rows < gridUnits.length; rows++)
          {
-            if(choice == gridUnits[rows][cols] &&(x == 0 && y == 0))
-            {
-               x = rows;
-               y = cols;
-  
-            }
-            
-            if(choice == gridUnits[x][y+1])
-            {
-               gridUnits[x][y].setText(null);
-               gridUnits[x][y+1].setText("X");
-  
-            }
-            
-            if(choice == gridUnits[rows][cols])
-            {
-               x = rows;
-               y = cols;
-  
-            }
-
-
-            
-                  
-         }
          
-      }//end of outer for loop
+            for(int cols = 0; cols < gridUnits.length; cols++)
+            {
+               
+               
+               if(choice == gridUnits[rows][cols] && (gridUnits[rows][cols].getText().equals("X")) &&(x == 0 && y == 0))
+               {
+                  x = rows;
+                  y = cols;
+ 
+               }
+
+            
+               if(choice == gridUnits[x][y+1] && (gridUnits[x][y].getText().equals("X")) && (gridUnits[x][y+1].getText().equals("")))
+               {
+                  gridUnits[x][y].setText("");
+                  gridUnits[x][y+1].setText("X");
+               
+               }
+
+                
+               if(choice == gridUnits[rows][cols] && (gridUnits[rows][cols].getText().equals("X")))
+               {
+                  x = rows;
+                  y = cols;
+               
+               }
+
+               
+               if(choice == gridUnits[rows][cols] && (gridUnits[rows][cols].getText().equals("O")) &&(x == 0 && y2 == 7))
+               {
+                  x = rows;
+                  y2 = cols;
+ 
+               }
+
+            
+               if(choice == gridUnits[x][y2-1] && (gridUnits[x][y2].getText().equals("O")) && (gridUnits[x][y2-1].getText().equals("")))
+               {
+                  gridUnits[x][y2].setText("");
+                  gridUnits[x][y2-1].setText("O");
+               
+               }
+
+                
+               if(choice == gridUnits[rows][cols] && (gridUnits[rows][cols].getText().equals("O")))
+               {
+                  x = rows;
+                  y2 = cols;
+               
+               }
+            
+            }
+         
+         }//end of outer for loop
+      }
+      
+      catch(NullPointerException npe)
+      {
+      
+      }
+      catch(ArrayIndexOutOfBoundsException aio)
+      {
+      
+      }
       
       System.out.println(x);
       System.out.println(y);
+      
+     
        
    }//end of actionPerformed
    
