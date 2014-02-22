@@ -15,13 +15,24 @@ private int y = 0;
       //JMenu
       JMenuBar jmb = new JMenuBar();
       setJMenuBar(jmb);
+      
+      //File
       JMenu jmFile = new JMenu("File");
       jmFile.setMnemonic(KeyEvent.VK_F);
-   
-      JMenuItem jmiOpen = new JMenuItem("Open");;
+      
+      //Help
+      JMenu jmHelp = new JMenu("Help");
+      jmHelp.setMnemonic(KeyEvent.VK_H);
+      
+      //File Items
+      JMenuItem jmiOpen = new JMenuItem("Open");
       JMenuItem jmiSave = new JMenuItem("Save");
       JMenuItem jmiExit = new JMenuItem("Exit");
       
+      //Help Item
+      JMenuItem = jmiAbout = new JMenuItem("About");
+      
+      //File Objects
       jmb.add(jmFile);
       jmFile.add(jmiOpen);
       jmiOpen.setMnemonic(KeyEvent.VK_O);
@@ -29,6 +40,10 @@ private int y = 0;
       jmiSave.setMnemonic(KeyEvent.VK_S);
       jmFile.add(jmiExit);
       jmiOpen.setMnemonic(KeyEvent.VK_E);
+      
+      //About Obkects
+      jmb.add(jmAbout);
+      jmAbout.add(jmiAbout);
       
       //JButton
       JButton jbNew = new JButton("New");
