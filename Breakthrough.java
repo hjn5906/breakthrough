@@ -44,11 +44,10 @@ public class Breakthrough extends JFrame implements ActionListener
       //Help Item
       JMenuItem jmAbout = new JMenuItem("About");
       
+      //Help Objects
       jmHelp.add(jmAbout);
       jmb.add(jmHelp);
    
-   
-      
       //creates grid
       JPanel grid = new JPanel();
       grid.setLayout(new GridLayout(8,8));
@@ -82,7 +81,7 @@ public class Breakthrough extends JFrame implements ActionListener
       }
             
             
-            //sets text for 16 buttons to the letter "X"
+      //sets text for 16 buttons to the letter "X"
       for( int rows = 0; rows< gridUnits.length; rows++)
       {
          
@@ -93,7 +92,7 @@ public class Breakthrough extends JFrame implements ActionListener
       }
    
      
-          //sets text for 16 buttons to the letter "O"
+      //sets text for 16 buttons to the letter "O"
    
       for(int rows = 0; rows< gridUnits.length; rows++)
       {
@@ -103,18 +102,7 @@ public class Breakthrough extends JFrame implements ActionListener
             gridUnits[rows][cols].setText("O");
          }
          
-      }         
-    
-   
-         /*
-         //loop to locate pieces  
-         for (int i = 0; i < 8; i++) 
-         {
-            gridUnits[1][i].add(new JLabel(new ImageIcon("bpawn.gif")));
-            gridUnits[6][i].add(new JLabel(new ImageIcon("wpawn.gif")));
-         }
-         */
-   
+      }      
       
       add(grid);
       
@@ -137,6 +125,10 @@ public class Breakthrough extends JFrame implements ActionListener
    {
       Object choice = ae.getSource();
       
+      if(choice.equals("Exit"))
+      {
+         System.exit(0);
+      }
       
       try
       { 
@@ -201,11 +193,11 @@ public class Breakthrough extends JFrame implements ActionListener
       
       catch(NullPointerException npe)
       {
-      
+         npe.printStackTrace();
       }
       catch(ArrayIndexOutOfBoundsException aio)
       {
-      
+         aio.printStackTrace();
       }
       
       System.out.println(x);
