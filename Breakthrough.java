@@ -123,9 +123,9 @@ public class Breakthrough extends JFrame implements ActionListener
    
    public void actionPerformed(ActionEvent ae)
    {
-      Object choice = ae.getActionCommand();
+      Object choice = ae.getSource);
       
-      if(choice.equals("Exit"))
+      /*if(choice.equals("Exit"))
       {
          System.exit(0);
       }
@@ -134,6 +134,8 @@ public class Breakthrough extends JFrame implements ActionListener
          JOptionPane.showMessageDialog(null,"121 MiniPrject: Chess" +
 				"\nFebruary 19, 2014" + "\nDeveloped By Hassan Ndow & Kevin Whetstone", "Chess", JOptionPane.INFORMATION_MESSAGE);
       }
+      (
+      */
       
       try
       { 
