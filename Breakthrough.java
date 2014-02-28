@@ -123,11 +123,16 @@ public class Breakthrough extends JFrame implements ActionListener
    
    public void actionPerformed(ActionEvent ae)
    {
-      Object choice = ae.getSource();
+      Object choice = ae.getActionCommand();
       
       if(choice.equals("Exit"))
       {
          System.exit(0);
+      }
+      else if (choice.equals("About"))
+      {
+         JOptionPane.showMessageDialog(null,"121 MiniPrject: Chess" +
+				"\nFebruary 19, 2014" + "\nDeveloped By Hassan Ndow & Kevin Whetstone", "Chess", JOptionPane.INFORMATION_MESSAGE);
       }
       
       try
