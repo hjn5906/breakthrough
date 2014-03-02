@@ -133,6 +133,8 @@ public class Breakthrough extends JFrame implements ActionListener
       
       try
       { 
+      
+         outerLoop:
          for (int rows = 0; rows < gridUnits.length; rows++)
          {
          
@@ -142,7 +144,7 @@ public class Breakthrough extends JFrame implements ActionListener
                
                
 
-               if(choice == gridUnits[rows][cols] && (gridUnits[rows][cols].getText().equals("X")) )
+               if(choice == gridUnits[rows][cols] && (gridUnits[rows][cols].getText().equals("X")))
                {
                   x = rows;
                   y = cols;
@@ -156,9 +158,13 @@ public class Breakthrough extends JFrame implements ActionListener
                   gridUnits[x][y].setText("");
                   gridUnits[x][y+1].setText("X");
                  
+                  break outerLoop;
+                 
                   
                                  
                }
+               
+               
 
                if(choice == gridUnits[rows][cols] && (gridUnits[rows][cols].getText().equals("O")))
                {
@@ -172,12 +178,16 @@ public class Breakthrough extends JFrame implements ActionListener
                {
                   gridUnits[x2][y2].setText("");
                   gridUnits[x2][y2-1].setText("O");
+                  break outerLoop;
                
                }
 
             }
          
-         }//end of outer for loop
+         }//end of outer for loop 
+         
+        
+         
       }
       
       catch(NullPointerException npe)
