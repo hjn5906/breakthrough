@@ -7,6 +7,7 @@ public class Breakthrough extends JFrame implements ActionListener
 {
    private JButton[][] gridUnits; // array holding grid square buttons
    private int x = 0;
+   private int x2 = 0;
    private int y = 0;
    private int y2 = 7;
    private boolean found = false;
@@ -147,11 +148,14 @@ public class Breakthrough extends JFrame implements ActionListener
             {
                
                
-               if(choice == gridUnits[rows][cols] && (gridUnits[rows][cols].getText().equals("X")) &&(x == 0 && y == 0))
+               
+
+               if(choice == gridUnits[rows][cols] && (gridUnits[rows][cols].getText().equals("X")) )
                {
                   x = rows;
                   y = cols;
- 
+                 
+               
                }
 
             
@@ -159,41 +163,26 @@ public class Breakthrough extends JFrame implements ActionListener
                {
                   gridUnits[x][y].setText("");
                   gridUnits[x][y+1].setText("X");
-               
+                 
+                  
+                                 
                }
 
-                
-               if(choice == gridUnits[rows][cols] && (gridUnits[rows][cols].getText().equals("X")))
+               if(choice == gridUnits[rows][cols] && (gridUnits[rows][cols].getText().equals("O")))
                {
-                  x = rows;
-                  y = cols;
-               
-               }
-
-               
-               if(choice == gridUnits[rows][cols] && (gridUnits[rows][cols].getText().equals("O")) &&(x == 0 && y2 == 7))
-               {
-                  x = rows;
+                  x2 = rows;
                   y2 = cols;
  
                }
 
             
-               if(choice == gridUnits[x][y2-1] && (gridUnits[x][y2].getText().equals("O")) && (gridUnits[x][y2-1].getText().equals("")))
+               if(choice == gridUnits[x2][y2-1] && (gridUnits[x2][y2].getText().equals("O")) && (gridUnits[x2][y2-1].getText().equals("")))
                {
-                  gridUnits[x][y2].setText("");
-                  gridUnits[x][y2-1].setText("O");
+                  gridUnits[x2][y2].setText("");
+                  gridUnits[x2][y2-1].setText("O");
                
                }
 
-                
-               if(choice == gridUnits[rows][cols] && (gridUnits[rows][cols].getText().equals("O")))
-               {
-                  x = rows;
-                  y2 = cols;
-               
-               }
-            
             }
          
          }//end of outer for loop
