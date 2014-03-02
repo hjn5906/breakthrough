@@ -6,6 +6,9 @@ import java.util.*;
 public class Breakthrough extends JFrame implements ActionListener
 {
    private JButton[][] gridUnits; // array holding grid square buttons
+   private JMenuBar jmb;
+   private JMenu jmFile, jmHelp;
+   private JMenuItem jmiExit, jmiAbout;
    private int x = 0;
    private int x2 = 0;
    private int y = 0;
@@ -16,40 +19,31 @@ public class Breakthrough extends JFrame implements ActionListener
    public Breakthrough()
    {
          
-      //JMenu
-      JMenuBar jmb = new JMenuBar();
+      //JMenuBar objects
+      jmb = new JMenuBar(); 
+      jmFile = new JMenu("File");
+      jmHelp = new JMenu("Help");
+      jmiExit = new JMenuItem("Exit");
+      jmiAbout = new JMenuItem("About");
+      
+      //adding JMenuBar objects to the JFrame, gui
+      jmFile.add(jmiExit); 
+      jmHelp.add(jmiAbout); 
+      jmb.add(jmFile); 
+      jmb.add(jmHelp); 
       setJMenuBar(jmb);
       
-      //File
-      JMenu jmFile = new JMenu("File");
+      //Mnemonic objects
       jmFile.setMnemonic(KeyEvent.VK_F);
-      
-      //Help
-      JMenu jmHelp = new JMenu("Help");
       jmHelp.setMnemonic(KeyEvent.VK_H);
+      jmiExit.setMnemonic(KeyEvent.VK_X);
+      jmiAbout.setMnemonic(KeyEvent.VK_A);
       
-      //File Items
-      JMenuItem jmiOpen = new JMenuItem("Open");
-      JMenuItem jmiSave = new JMenuItem("Save");
-      JMenuItem jmiExit = new JMenuItem("Exit");
-      
-      //File Objects
-      jmb.add(jmFile);
-      jmFile.add(jmiOpen);
-      jmiOpen.setMnemonic(KeyEvent.VK_O);
-      jmFile.add(jmiSave);
-      jmiSave.setMnemonic(KeyEvent.VK_S);
-      jmFile.add(jmiExit);
-      jmiOpen.setMnemonic(KeyEvent.VK_E);
-      
-      //Help Item
-      JMenuItem jmAbout = new JMenuItem("About");
-      
-      jmHelp.add(jmAbout);
-      jmb.add(jmHelp);
+      //Adding ActionListener
+      jmiExit.addActionListener(this); 
+      jmiAbout.addActionListener(this);
+
    
-   
-      
       //creates grid
       JPanel grid = new JPanel();
       grid.setLayout(new GridLayout(8,8));
@@ -83,7 +77,7 @@ public class Breakthrough extends JFrame implements ActionListener
       }
             
             
-            //sets text for 16 buttons to the letter "X"
+      //sets text for 16 buttons to the letter "X"
       for( int rows = 0; rows< gridUnits.length; rows++)
       {
          
@@ -94,7 +88,7 @@ public class Breakthrough extends JFrame implements ActionListener
       }
    
      
-          //sets text for 16 buttons to the letter "O"
+      //sets text for 16 buttons to the letter "O"
    
       for(int rows = 0; rows< gridUnits.length; rows++)
       {
@@ -104,18 +98,7 @@ public class Breakthrough extends JFrame implements ActionListener
             gridUnits[rows][cols].setText("O");
          }
          
-      }         
-    
-   
-         /*
-         //loop to locate pieces  
-         for (int i = 0; i < 8; i++) 
-         {
-            gridUnits[1][i].add(new JLabel(new ImageIcon("bpawn.gif")));
-            gridUnits[6][i].add(new JLabel(new ImageIcon("wpawn.gif")));
-         }
-         */
-   
+      }      
       
       add(grid);
       
@@ -138,6 +121,15 @@ public class Breakthrough extends JFrame implements ActionListener
    {
       Object choice = ae.getSource();
       
+      if(choice.equals(jmiExit))
+      {
+         System.exit(0);
+      }
+      else if(choice.equals(jmiAbout))
+      {
+         JOptionPane.showMessageDialog(null,"121 MiniPrject: Chess" +
+				"\nFebruary 19, 2014" + "\nDeveloped By Hassan Ndow & Kevin Whetstone", "Chess", JOptionPane.INFORMATION_MESSAGE);
+      }
       
       try
       { 
@@ -190,11 +182,11 @@ public class Breakthrough extends JFrame implements ActionListener
       
       catch(NullPointerException npe)
       {
-      
+         npe.printStackTrace();
       }
       catch(ArrayIndexOutOfBoundsException aio)
       {
-      
+         aio.printStackTrace();
       }
       
       System.out.println(x);
