@@ -6,6 +6,9 @@ import java.util.*;
 public class Breakthrough extends JFrame implements ActionListener
 {
    private JButton[][] gridUnits; // array holding grid square buttons
+   private JMenuBar jmb;
+   private JMenu jmFile, jmHelp;
+   private JMenuItem jmiExit, jmiAbout;
    private int x = 0;
    private int y = 0;
    private int y2 = 7;
@@ -16,11 +19,11 @@ public class Breakthrough extends JFrame implements ActionListener
    {
          
       //JMenuBar objects
-      JMenuBar jmb = new JMenuBar(); 
-      JMenu jmFile = new JMenu("File");
-      JMenu jmHelp = new JMenu("Help");
-      JMenuItem jmiExit = new JMenuItem("Exit");
-      JMenuItem jmiAbout = new JMenuItem("About");
+      jmb = new JMenuBar(); 
+      jmFile = new JMenu("File");
+      jmHelp = new JMenu("Help");
+      jmiExit = new JMenuItem("Exit");
+      jmiAbout = new JMenuItem("About");
       
       //adding JMenuBar objects to the JFrame, gui
       jmFile.add(jmiExit); 
@@ -37,13 +40,8 @@ public class Breakthrough extends JFrame implements ActionListener
       
       //Adding ActionListener
       jmiExit.addActionListener(this); 
-      
-      //Help Item
-      JMenuItem jmAbout = new JMenuItem("About");
-      
-      //Help Objects
-      jmHelp.add(jmAbout);
-      jmb.add(jmHelp);
+      jmiAbout.addActionListener(this);
+
    
       //creates grid
       JPanel grid = new JPanel();
@@ -120,19 +118,17 @@ public class Breakthrough extends JFrame implements ActionListener
    
    public void actionPerformed(ActionEvent ae)
    {
-      Object choice = ae.getSource);
+      Object choice = ae.getSource();
       
-      /*if(choice.equals("Exit"))
+      if(choice.equals(jmiExit))
       {
          System.exit(0);
       }
-      else if (choice.equals("About"))
+      else if(choice.equals(jmiAbout))
       {
          JOptionPane.showMessageDialog(null,"121 MiniPrject: Chess" +
 				"\nFebruary 19, 2014" + "\nDeveloped By Hassan Ndow & Kevin Whetstone", "Chess", JOptionPane.INFORMATION_MESSAGE);
       }
-      (
-      */
       
       try
       { 
