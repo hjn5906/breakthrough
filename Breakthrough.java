@@ -15,31 +15,28 @@ public class Breakthrough extends JFrame implements ActionListener
    public Breakthrough()
    {
          
-      //JMenu
-      JMenuBar jmb = new JMenuBar();
+      //JMenuBar objects
+      JMenuBar jmb = new JMenuBar(); 
+      JMenu jmFile = new JMenu("File");
+      JMenu jmHelp = new JMenu("Help");
+      JMenuItem jmiExit = new JMenuItem("Exit");
+      JMenuItem jmiAbout = new JMenuItem("About");
+      
+      //adding JMenuBar objects to the JFrame, gui
+      jmFile.add(jmiExit); 
+      jmHelp.add(jmiAbout); 
+      jmb.add(jmFile); 
+      jmb.add(jmHelp); 
       setJMenuBar(jmb);
       
-      //File
-      JMenu jmFile = new JMenu("File");
+      //Mnemonic objects
       jmFile.setMnemonic(KeyEvent.VK_F);
-      
-      //Help
-      JMenu jmHelp = new JMenu("Help");
       jmHelp.setMnemonic(KeyEvent.VK_H);
+      jmiExit.setMnemonic(KeyEvent.VK_X);
+      jmiAbout.setMnemonic(KeyEvent.VK_A);
       
-      //File Items
-      JMenuItem jmiOpen = new JMenuItem("Open");
-      JMenuItem jmiSave = new JMenuItem("Save");
-      JMenuItem jmiExit = new JMenuItem("Exit");
-      
-      //File Objects
-      jmb.add(jmFile);
-      jmFile.add(jmiOpen);
-      jmiOpen.setMnemonic(KeyEvent.VK_O);
-      jmFile.add(jmiSave);
-      jmiSave.setMnemonic(KeyEvent.VK_S);
-      jmFile.add(jmiExit);
-      jmiOpen.setMnemonic(KeyEvent.VK_E);
+      //Adding ActionListener
+      jmiExit.addActionListener(this); 
       
       //Help Item
       JMenuItem jmAbout = new JMenuItem("About");
