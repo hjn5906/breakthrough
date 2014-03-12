@@ -86,7 +86,8 @@ public class Breakthrough extends JFrame implements ActionListener
          
          for(int cols = 0;cols <2; cols++)
          {
-            gridUnits[rows][cols].setText("X");
+            //gridUnits[rows][cols].setText("X");
+            gridUnits[rows][cols].setIcon(new ImageIcon("black.jpg"));
          }
       }
    
@@ -98,7 +99,9 @@ public class Breakthrough extends JFrame implements ActionListener
          
          for(int cols = 6;cols <8; cols++)
          {
-            gridUnits[rows][cols].setText("O");
+            //gridUnits[rows][cols].setText("O");
+            gridUnits[rows][cols].setIcon(new ImageIcon("white.jpg"));
+
          }
          
       }      
