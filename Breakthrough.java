@@ -17,11 +17,13 @@ public class Breakthrough extends JFrame implements ActionListener
    private int y = 0;
    private int y2 = 7;
    private boolean found = false;
-
+   private ImageIcon black = new ImageIcon("black.jpg","black");
+   private ImageIcon white = new ImageIcon("white.jpg","white");
    
    public Breakthrough()
    {
-         
+            
+      
       //JMenuBar objects
       jmb = new JMenuBar(); 
       jmFile = new JMenu("File");
@@ -87,7 +89,7 @@ public class Breakthrough extends JFrame implements ActionListener
          for(int cols = 0;cols <2; cols++)
          {
             //gridUnits[rows][cols].setText("X");
-            gridUnits[rows][cols].setIcon(new ImageIcon("black.jpg"));
+            gridUnits[rows][cols].setIcon(black);
          }
       }
    
@@ -100,11 +102,28 @@ public class Breakthrough extends JFrame implements ActionListener
          for(int cols = 6;cols <8; cols++)
          {
             //gridUnits[rows][cols].setText("O");
-            gridUnits[rows][cols].setIcon(new ImageIcon("white.jpg"));
+            gridUnits[rows][cols].setIcon(white);
+
+         }
+         
+      }    
+      
+      //sets text for 16 buttons to the letter "O"
+   
+      for(int rows = 0; rows< gridUnits.length; rows++)
+      {
+         
+         for(int cols = 2;cols <6; cols++)
+         {
+            //gridUnits[rows][cols].setText("O");
+            gridUnits[rows][cols].setIcon(null);
 
          }
          
       }      
+      
+      
+         
       
       add(grid);
       
@@ -151,7 +170,7 @@ public class Breakthrough extends JFrame implements ActionListener
                if(turn == false)
                {
                   //saves location of X piece clicked on
-                  if(choice == gridUnits[rows][cols] && (gridUnits[rows][cols].getText().equals("X")))
+                  if(choice == gridUnits[rows][cols] && (gridUnits[rows][cols].getIcon().equals(black)))
                   {
                      x = rows;
                      x3 = rows;
@@ -161,10 +180,10 @@ public class Breakthrough extends JFrame implements ActionListener
                   }
    
                   //moves x piece horizontally
-                  if(choice == gridUnits[x][y+1] && (gridUnits[x][y].getText().equals("X")) && (gridUnits[x][y+1].getText().equals("")))
+                  if(choice == gridUnits[x][y+1] && (gridUnits[x][y].getIcon().equals(black)) && (gridUnits[x][y+1].getIcon() == null))
                   {
-                     gridUnits[x][y].setText("");
-                     gridUnits[x][y+1].setText("X");
+                     gridUnits[x][y].setIcon(null);
+                     gridUnits[x][y+1].setIcon(black);
                      turn = true;
                      break outerLoop;                 
                   }
@@ -172,10 +191,10 @@ public class Breakthrough extends JFrame implements ActionListener
                   //moves x piece diagonally(right + up)
                   if(x3 > 0)
                   {
-                     if(choice == gridUnits[x3-1][y+1] && (gridUnits[x][y].getText().equals("X")) && ((gridUnits[x3-1][y+1].getText().equals("")) || (gridUnits[x3-1][y+1].getText().equals("O"))))
+                     if(choice == gridUnits[x3-1][y+1] && (gridUnits[x][y].getIcon().equals(black)) && ((gridUnits[x3-1][y+1].getIcon() == null) || (gridUnits[x3-1][y+1].getIcon().equals(white))))
                      {
-                        gridUnits[x][y].setText("");
-                        gridUnits[x3-1][y+1].setText("X");
+                        gridUnits[x][y].setIcon(null);
+                        gridUnits[x3-1][y+1].setIcon(black);
                         turn = true;
                         break outerLoop;                 
                      }
@@ -184,10 +203,10 @@ public class Breakthrough extends JFrame implements ActionListener
                   //moves x piece diagonally(right + down)
                   if(x<7)
                   {
-                     if(choice == gridUnits[x+1][y+1] && (gridUnits[x][y].getText().equals("X")) && ((gridUnits[x+1][y+1].getText().equals("")) || (gridUnits[x+1][y+1].getText().equals("O"))))
+                     if(choice == gridUnits[x+1][y+1] && (gridUnits[x][y].getIcon().equals(black)) && ((gridUnits[x+1][y+1].getIcon() == null) || (gridUnits[x+1][y+1].getIcon().equals(white))))
                      {
-                        gridUnits[x][y].setText("");
-                        gridUnits[x+1][y+1].setText("X");
+                        gridUnits[x][y].setIcon(null);
+                        gridUnits[x+1][y+1].setIcon(black);
                         turn = true;
                         break outerLoop;                 
                      }
@@ -200,7 +219,7 @@ public class Breakthrough extends JFrame implements ActionListener
                if(turn == true)
                {
                   //save location of O piece clicked on
-                  if(choice == gridUnits[rows][cols] && (gridUnits[rows][cols].getText().equals("O")))
+                  if(choice == gridUnits[rows][cols] && (gridUnits[rows][cols].getIcon().equals(white)))
                   {
                      x2 = rows;
                      x4 = rows;
@@ -209,10 +228,10 @@ public class Breakthrough extends JFrame implements ActionListener
                   }
    
                   //moves o piece horizontally
-                  if(choice == gridUnits[x2][y2-1] && (gridUnits[x2][y2].getText().equals("O")) && (gridUnits[x2][y2-1].getText().equals("")))
+                  if(choice == gridUnits[x2][y2-1] && (gridUnits[x2][y2].getIcon().equals(white)) && (gridUnits[x2][y2-1].getIcon() == null))
                   {
-                     gridUnits[x2][y2].setText("");
-                     gridUnits[x2][y2-1].setText("O");
+                     gridUnits[x2][y2].setIcon(null);
+                     gridUnits[x2][y2-1].setIcon(white);
                      turn = false;
                      break outerLoop;
                   
@@ -221,10 +240,11 @@ public class Breakthrough extends JFrame implements ActionListener
                   //moves O piece diagonally(right + up)
                   if(x4 > 0)
                   {
-                     if(choice == gridUnits[x4-1][y2-1]  && (gridUnits[x2][y2].getText().equals("O")) && ((gridUnits[x4-1][y2-1].getText().equals("")) || (gridUnits[x4-1][y2-1].getText().equals("X"))))
+                     if(choice == gridUnits[x4-1][y2-1]  && (gridUnits[x2][y2].getIcon().equals(white)) && ((gridUnits[x4-1][y2-1].getIcon() == null) || (gridUnits[x4-1][y2-1].getIcon().equals(black))))
                      {
-                        gridUnits[x2][y2].setText("");
-                        gridUnits[x4 - 1][y2-1].setText("O");
+                        gridUnits[x2][y2].setIcon(null);
+                        gridUnits[x4 - 1][y2-1].setIcon(white);
+
                         turn = false;
                         break outerLoop;
                      
@@ -234,10 +254,10 @@ public class Breakthrough extends JFrame implements ActionListener
                   //moves O piece diagonally(right + down)
                   if(x2 < 7)
                   {
-                     if(choice == gridUnits[x2+1][y2-1]  && (gridUnits[x2][y2].getText().equals("O")) && ((gridUnits[x2+1][y2-1].getText().equals("")) || (gridUnits[x2+1][y2-1].getText().equals("X"))))
+                     if(choice == gridUnits[x2+1][y2-1]  && (gridUnits[x2][y2].getIcon().equals(white)) && ((gridUnits[x2+1][y2-1].getIcon() == null) || (gridUnits[x2+1][y2-1].getIcon().equals(black))))
                      {
-                        gridUnits[x2][y2].setText("");
-                        gridUnits[x2+1][y2-1].setText("O");
+                        gridUnits[x2][y2].setIcon(null);
+                        gridUnits[x2+1][y2-1].setIcon(white);
                         turn = false;
                         break outerLoop;
                      
