@@ -9,7 +9,6 @@ public class Breakthrough extends JFrame implements ActionListener
    private JMenuBar jmb;
    private JMenu jmFile, jmHelp;
    private JMenuItem jmiExit, jmiStart, jmiAbout, jmiRule;
-   private JMenuItem jmiExit, jmiAbout, jmiRule;
    private int x = 0;
    private int x2 = 0;
    private int x3 = 7;
@@ -45,14 +44,11 @@ public class Breakthrough extends JFrame implements ActionListener
       jmiExit = new JMenuItem("Exit");
       jmiAbout = new JMenuItem("About");
       jmiRule = new JMenuItem("Rules");
-      jmiRule = new JMenuItem("Rule");
       
       //adding JMenuBar objects to the JFrame, gui
       jmFile.add(jmiStart); 
       jmFile.add(jmiExit); 
       jmHelp.add(jmiAbout); 
-      jmHelp.add(jmiRule);
-      jmHelp.add(jmiAbout);
       jmHelp.add(jmiRule); 
       jmb.add(jmFile); 
       jmb.add(jmHelp); 
@@ -75,16 +71,7 @@ public class Breakthrough extends JFrame implements ActionListener
       //adds text identifying who's turn it is
       add(player = new JLabel("", JLabel.CENTER),BorderLayout.NORTH);
           
-      if(turn == false)
-      {
-         player.setText("Player 1 starts first!");
-      }
-      
-      if(turn == true)
-      {
-         player.setText("Player 2 starts first!");
-      }
-      
+           
       //creates grid
       grid = new JPanel();
       grid.setLayout(new GridLayout(8,8));
@@ -228,26 +215,21 @@ public class Breakthrough extends JFrame implements ActionListener
          jmiStart.setEnabled(false);
       }
       
-      else if(choice.equals(jmiAbout))
+      if(choice.equals(jmiAbout))
       {
          JOptionPane.showMessageDialog(null,"121 MiniPrject: Chess" +
             "\nFebruary 19, 2014" + "\nDeveloped By Hassan Ndow & Kevin Whetstone", "Chess", JOptionPane.INFORMATION_MESSAGE);
       }
-      else if(choice.equals(jmiRule))
+      if(choice.equals(jmiRule))
       {
          JOptionPane.showMessageDialog(null,"1. White moves first.\n" +
 		    "2. A piece may move one space forward, directly or \ndiagonally, into an empty space. Pieces may not \nmove backward.\n"+
 		    "3. A piece may capture an opposing piece, removing it \nfrom the board, by moving diagonally forward into \nthe space it occupies. You may not move a piece \ndirectly forward into a space occupied by an \nopposing piece.\n"+
 		    "4. The game ends when a player moves a piece to the \nrow on the opposite edge of the board. The player to \naccomplish that first wins. If at any point in the \ngame, neither player can make a legal move, the \ngame ends in a draw."
-						,"Rules",JOptionPane.INFORMATION_MESSAGE);}
+						,"Rules",JOptionPane.INFORMATION_MESSAGE);
+     }
       
-       else if(choice.equals(jmiRule))
-	    {
-         JOptionPane.showMessageDialog(null,"1. White moves first.\n" +
-			    "2. A piece may move one space forward, directly or \ndiagonally, into an empty space. Pieces may not \nmove backward.\n"+
-			    "3. A piece may capture an opposing piece, removing it \nfrom the board, by moving diagonally forward into \nthe space it occupies. You may not move a piece \ndirectly forward into a space occupied by an \nopposing piece.\n"+
-			    "4. The game ends when a player moves a piece to the \nrow on the opposite edge of the board. The player to \naccomplish that first wins. If at any point in the \ngame, neither player can make a legal move, the \ngame ends in a draw."
-							,"Rules",JOptionPane.INFORMATION_MESSAGE);}
+       
       
       try
       {
