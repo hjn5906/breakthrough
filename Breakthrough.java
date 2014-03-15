@@ -222,10 +222,10 @@ public class Breakthrough extends JFrame implements ActionListener
       }
       if(choice.equals(jmiRule))
       {
-         JOptionPane.showMessageDialog(null,"1. White moves first.\n" +
+         JOptionPane.showMessageDialog(null,"1. Random player gets first turn.\n" +
 		    "2. A piece may move one space forward, directly or \ndiagonally, into an empty space. Pieces may not \nmove backward.\n"+
-		    "3. A piece may capture an opposing piece, removing it \nfrom the board, by moving diagonally forward into \nthe space it occupies. You may not move a piece \ndirectly forward into a space occupied by an \nopposing piece.\n"+
-		    "4. The game ends when a player moves a piece to the \nrow on the opposite edge of the board. The player to \naccomplish that first wins. If at any point in the \ngame, neither player can make a legal move, the \ngame ends in a draw."
+		    "3. A piece may capture an opposing piece, removing it \nfrom the board, by moving diagonally forward into \nthe space it occupies. You may not move a piece \ndirectly forward into a space occupied by your \nown piece.\n"+
+		    "4. The game ends when a player moves a piece to the \nrow on the opposite edge of the board. The player to \naccomplish that first wins."
 						,"Rules",JOptionPane.INFORMATION_MESSAGE);
      }
       
