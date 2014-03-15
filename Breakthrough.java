@@ -13,7 +13,7 @@ public class Breakthrough extends JFrame implements ActionListener
    private int x2 = 0;
    private int x3 = 7;
    private int x4 = 7;
-   private boolean turn = false;
+   private boolean turn;
    private boolean gameSet = false;
    private int y = 0;
    private int y2 = 7;
@@ -21,14 +21,18 @@ public class Breakthrough extends JFrame implements ActionListener
    private ImageIcon black;
    private ImageIcon white;
    private ImageIcon blank;
+   private JLabel player;
 
    
    public Breakthrough()
    {
-         
+      turn = Math.random() < 0.5;
+      
+      //defines icons   
       black = new ImageIcon("black.jpg");
       white = new ImageIcon("white.jpg");
-      blank = new ImageIcon("blank.jpg");   
+      blank = new ImageIcon("blank.jpg"); 
+        
       //JMenuBar objects
       jmb = new JMenuBar(); 
       jmFile = new JMenu("File");
@@ -52,8 +56,20 @@ public class Breakthrough extends JFrame implements ActionListener
       //Adding ActionListener
       jmiExit.addActionListener(this); 
       jmiAbout.addActionListener(this);
-
-   
+      
+      //adds text identifying who's turn it is
+      add(player = new JLabel("", JLabel.CENTER),BorderLayout.NORTH);
+          
+      if(turn == false)
+      {
+         player.setText("Player 1 starts first!");
+      }
+      
+      if(turn == true)
+      {
+         player.setText("Player 2 starts first!");
+      }
+      
       //creates grid
       JPanel grid = new JPanel();
       grid.setLayout(new GridLayout(8,8));
@@ -129,6 +145,8 @@ public class Breakthrough extends JFrame implements ActionListener
       
       add(grid);
       
+      
+      
       for (int rows = 0; rows < gridUnits.length; rows++)
       {
        
@@ -196,6 +214,7 @@ public class Breakthrough extends JFrame implements ActionListener
                 
                   if(turn == false)
                   {
+                     
                      //saves location of X piece clicked on
                      if(choice == gridUnits[rows][cols] && (gridUnits[rows][cols].getIcon().equals(black)))
                      {
@@ -212,6 +231,7 @@ public class Breakthrough extends JFrame implements ActionListener
                         gridUnits[x][y+1].setIcon(black);
                         player1Wins(y);
                         turn = true;
+                        player.setText("Player 2's turn!");
                         break outerLoop;                 
                      }
                      
@@ -224,6 +244,7 @@ public class Breakthrough extends JFrame implements ActionListener
                            gridUnits[x3-1][y+1].setIcon(black);
                            player1Wins(y);
                            turn = true;
+                           player.setText("Player 2's turn!");
                            break outerLoop;                 
                         }
                      }
@@ -237,6 +258,7 @@ public class Breakthrough extends JFrame implements ActionListener
                            gridUnits[x+1][y+1].setIcon(black);
                            player1Wins(y);
                            turn = true;
+                           player.setText("Player 2's turn!");
                            break outerLoop;                 
                         }
                      }
@@ -247,6 +269,7 @@ public class Breakthrough extends JFrame implements ActionListener
                   
                   if(turn == true)
                   {
+                     
                      //save location of O piece clicked on
                      if(choice == gridUnits[rows][cols] && (gridUnits[rows][cols].getIcon().equals(white)))
                      {
@@ -263,6 +286,7 @@ public class Breakthrough extends JFrame implements ActionListener
                         gridUnits[x2][y2-1].setIcon(white);
                         player2Wins(y2);
                         turn = false;
+                        player.setText("Player 1's turn!");
                         break outerLoop;
                      
                      }
@@ -276,6 +300,7 @@ public class Breakthrough extends JFrame implements ActionListener
                            gridUnits[x4 - 1][y2-1].setIcon(white);
                            player2Wins(y2);
                            turn = false;
+                           player.setText("Player 1's turn!");
                            break outerLoop;
                         
                         }
@@ -290,6 +315,7 @@ public class Breakthrough extends JFrame implements ActionListener
                            gridUnits[x2+1][y2-1].setIcon(white);
                            player2Wins(y2);
                            turn = false;
+                           player.setText("Player 1's turn!");
                            break outerLoop;
                         
                         }
