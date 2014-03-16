@@ -19,7 +19,7 @@ public class Breakthrough extends JFrame implements ActionListener
    private JButton[][] gridUnits;                              // array holding grid square buttons
    private JMenuBar jmb;                                       // the menu bar
    private JMenu jmFile, jmHelp;                               // the menus
-   private JMenuItem jmiExit, jmiStart, jmiAbout, jmiRule;     // the menu items
+   private JMenuItem jmiExit, jmiStart, jmiRestart, jmiAbout, jmiRule;     // the menu items
    private int x = 0;                                          // stores current row of black piece when moving right or right + down
    private int x3 = 7;                                         // stores current row of black piece when moving right + down
    private int y = 0;                                          // stores current column of black piece
@@ -57,12 +57,15 @@ public class Breakthrough extends JFrame implements ActionListener
       jmFile = new JMenu("File");
       jmHelp = new JMenu("Help");
       jmiStart = new JMenuItem("Start game");
+      jmiRestart = new JMenuItem("Restart game");
+      jmiRestart.setEnabled(false);
       jmiExit = new JMenuItem("Exit");
       jmiAbout = new JMenuItem("About");
       jmiRule = new JMenuItem("Rules");
       
       //adding JMenuBar objects to the JFrame
       jmFile.add(jmiStart); 
+      jmFile.add(jmiRestart);
       jmFile.add(jmiExit); 
       jmHelp.add(jmiAbout); 
       jmHelp.add(jmiRule); 
@@ -77,9 +80,11 @@ public class Breakthrough extends JFrame implements ActionListener
       jmiAbout.setMnemonic(KeyEvent.VK_A);
       jmiRule.setMnemonic(KeyEvent.VK_R);
       jmiStart.setMnemonic(KeyEvent.VK_S);
+      jmiRestart.setMnemonic(KeyEvent.VK_T);
       
       //Adding ActionListener
       jmiStart.addActionListener(this);
+      jmiRestart.addActionListener(this);
       jmiExit.addActionListener(this); 
       jmiAbout.addActionListener(this);
       jmiRule.addActionListener(this);
@@ -164,7 +169,8 @@ public class Breakthrough extends JFrame implements ActionListener
          
          }
          
-      } 
+      }  
+
       
       //adds actionListeners to all of the 64 buttons
       for (int rows = 0; rows < gridUnits.length; rows++)
@@ -179,6 +185,87 @@ public class Breakthrough extends JFrame implements ActionListener
       }
    
    } // end of load method
+   
+   //start of restart method
+   public void restart()
+   {
+      //resets values     
+      x = 0;                                          // stores current row of black piece when moving right or right + down
+      x3 = 7;                                         // stores current row of black piece when moving right + down
+      y = 0;                                          // stores current column of black piece
+      x2 = 0;                                         // stores current row of white piece when moving left or left + down
+      x4 = 7;                                         // stores current row of white piece when moving left + down
+      y2 = 7;                                         // stores current column of black piece
+      gameSet = false;                            // decides if a player has won the game or not
+      whiteCount = 0;                                 // counts how many white pieces were taken
+      blackCount = 0;                                 // counts how many black pieces were taken
+      
+      
+      //determines which players start first
+      turn = Math.random() < 0.5; 
+          
+      //if turn == 0/false    
+      if(turn == false)
+      {
+         player.setText("<html><strong><font color='red'>Player 1 starts first!</font></strong></html>");
+      }
+      
+      //if turn == 1/true
+      if(turn == true)
+      {
+         player.setText("<html><strong><font color='blue'>Player 2 starts first!</font></strong></html>");
+      }
+      
+                  
+            
+      //sets icons for the left 16 buttons to the icon black
+      for( int rows = 0; rows< gridUnits.length; rows++)
+      {
+         
+         for(int cols = 0;cols <2; cols++)
+         {
+            gridUnits[rows][cols].setIcon(black);
+         }
+      }
+   
+     
+      //sets icons for the right 16 buttons to the icon white
+      for(int rows = 0; rows< gridUnits.length; rows++)
+      {
+         
+         for(int cols = 6;cols <8; cols++)
+         {
+            gridUnits[rows][cols].setIcon(white);
+         
+         }
+         
+      }
+      
+      //sets icons for the middle 32 buttons to the icon blank
+      for(int rows = 0; rows< gridUnits.length; rows++)
+      {
+         
+         for(int cols = 2;cols <6; cols++)
+         {
+            gridUnits[rows][cols].setIcon(blank);
+         
+         }
+         
+      } 
+      
+      //adds actionListeners to all of the 64 buttons
+      for (int rows = 0; rows < gridUnits.length; rows++)
+      {
+       
+         for(int cols = 0; cols < gridUnits.length; cols++)
+         {
+            gridUnits[rows][cols].addActionListener(this);
+         
+         }
+      
+      }
+
+   } // end of restart method
    
    
 
@@ -223,7 +310,16 @@ public class Breakthrough extends JFrame implements ActionListener
       {
          load();
          jmiStart.setEnabled(false);
+         jmiRestart.setEnabled(true);
       }
+      
+      //If restart game was clicked, restart the pieces
+      if(choice.equals(jmiRestart))
+      {
+         restart();
+         jmiStart.setEnabled(false);
+      }
+
       
       //If about was clicked, display info about the game
       if(choice.equals(jmiAbout))
