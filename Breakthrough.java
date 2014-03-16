@@ -125,7 +125,7 @@ public class Breakthrough extends JFrame implements ActionListener
       
       //adds the grid to the JFrame
       add(grid);
- 
+   
    } //end of constructor
    
    //start of the load method that loads the pieces to the grid
@@ -170,7 +170,7 @@ public class Breakthrough extends JFrame implements ActionListener
          }
          
       }  
-
+   
       
       //adds actionListeners to all of the 64 buttons
       for (int rows = 0; rows < gridUnits.length; rows++)
@@ -264,7 +264,7 @@ public class Breakthrough extends JFrame implements ActionListener
          }
       
       }
-
+   
    } // end of restart method
    
    
@@ -319,7 +319,7 @@ public class Breakthrough extends JFrame implements ActionListener
          restart();
          jmiStart.setEnabled(false);
       }
-
+   
       
       //If about was clicked, display info about the game
       if(choice.equals(jmiAbout))
@@ -555,11 +555,11 @@ public class Breakthrough extends JFrame implements ActionListener
                      }
                      
                   } // end of if(turn == false)
-
+               
                } // end of inner loop
             
             }//end of outer for loop 
-
+         
          }  // end of gameSet if statement 
          
       } // end of try block
